@@ -41,30 +41,42 @@ const Login = () => {
       <div className="container_login">
         <form onSubmit={handleSubmit} method="post" className="form_login">
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" id="email">
+              Email
+            </label>
             <input
               type="email"
               id="email"
+              data-testid="email"
               name="email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" id="password">
+              Password
+            </label>
             <input
               type="password"
               id="password"
+              data-testid="password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <button type="submit" disabled={login === true}>
+          <button
+            type="submit"
+            data-testid="btn-send-login"
+            disabled={login === true}
+          >
             Login
           </button>
           {messageError && (
-            <p className="message_login-error">{messageError}</p>
+            <p className="message_login-error" data-testid="error-msg-login">
+              {messageError}
+            </p>
           )}
         </form>
       </div>

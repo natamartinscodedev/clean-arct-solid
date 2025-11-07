@@ -32,7 +32,12 @@ export const authenticateUser = async ({
       userId: "natanzinhoCodedev",
       status: res.status,
     };
-  } catch (error) {
-    throw new Error("Erro na autenticação");
+  } catch (err) {
+    console.error("Erro na autenticação:", err);
+    return {
+      token: "",
+      userId: "",
+      status: 500,
+    };
   }
 };
