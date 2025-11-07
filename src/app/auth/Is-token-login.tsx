@@ -9,16 +9,12 @@ const IsTokenValidate = ({ token }: TokenValidateProps) => {
     // em um caso real, aqui faríamos uma verificação mais robusta, talvez consultando um banco de dados ou serviço externo
     if (token !== "teste123") {
       return {
-        tokenValid: false,
-        messager: "Token inválido",
-        token: null,
+        token: false,
       };
     }
 
     return {
       tokenValid: true,
-      messager: "Token válido",
-      token: token,
     };
   } catch (error) {
     return { error: "Erro na verificação de token" };

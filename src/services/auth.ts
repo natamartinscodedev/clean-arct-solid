@@ -1,6 +1,6 @@
 // logica para retornar o token e validar o login
 export type Credentials = { email: string; password: string };
-export type LoginResult = { token: string; userId: string };
+export type LoginResult = { token: string; userId: string; status: number };
 
 export const authenticateUser = async ({
   email,
@@ -18,15 +18,20 @@ export const authenticateUser = async ({
       body: JSON.stringify({ email, password, token: "teste123" }),
     });
 
-    if (!res.ok) {
-      throw new Error("Falha na autenticação");
+    if (res.status !== 200) {
+      console.log("Falha no login");
     } else {
       console.log("Login bem-sucedido");
     }
 
     const data = await res.json();
+    console.log("Dados recebidos da API:", data);
 
-    return { token: data.message, userId: "natanzinho Codedev" };
+    return {
+      token: data,
+      userId: "natanzinhoCodedev",
+      status: res.status,
+    };
   } catch (error) {
     throw new Error("Erro na autenticação");
   }

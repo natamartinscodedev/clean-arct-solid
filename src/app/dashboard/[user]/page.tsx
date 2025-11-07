@@ -1,7 +1,7 @@
 "use client";
 
 const User = () => {
-  return <div>User</div>;
+  return <div>User: {"Naythan"}</div>;
 };
 
 export default User;
